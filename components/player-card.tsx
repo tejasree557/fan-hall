@@ -36,10 +36,10 @@ export function PlayerCard({
         <span className="write-link">Write →</span>
       </div>
 
-      <style jsx>{`
+<style jsx>{`
         .player-card {
           border-radius: 16px;
-          height: 208px;
+          height: 160px;
           position: relative;
           cursor: pointer;
           transition: 0.25s ease;
@@ -48,6 +48,12 @@ export function PlayerCard({
 
         .player-card:hover {
           transform: scale(1.04);
+        }
+
+        @media (min-width: 640px) {
+          .player-card {
+            height: 208px;
+          }
         }
 
         .player-image-wrap {
@@ -65,18 +71,18 @@ export function PlayerCard({
           bottom: 0;
           left: 0;
           width: 100%;
-          padding: 12px;
+          padding: 10px;
           background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3), transparent);
         }
 
         .story-badge {
           position: absolute;
-          top: 10px;
-          right: 10px;
+          top: 8px;
+          right: 8px;
           z-index: 2;
-          padding: 4px 8px;
+          padding: 3px 6px;
           border-radius: 999px;
-          font-size: 11px;
+          font-size: 10px;
           font-weight: 600;
           color: #ffffff;
           background: rgba(0, 0, 0, 0.55);
@@ -84,28 +90,55 @@ export function PlayerCard({
           border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
+        @media (min-width: 640px) {
+          .story-badge {
+            top: 10px;
+            right: 10px;
+            padding: 4px 8px;
+            font-size: 11px;
+          }
+        }
+
         .player-name {
           margin-top: 0;
           margin-bottom: 0;
-          font-size: 15px;
+          font-size: 13px;
           font-weight: 600;
           line-height: 1.3;
           color: #ffffff;
         }
 
+        @media (min-width: 640px) {
+          .player-name {
+            font-size: 15px;
+          }
+        }
+
         .player-country {
-          margin-top: 4px;
+          margin-top: 2px;
           margin-bottom: 0;
-          font-size: 11px;
+          font-size: 10px;
           opacity: 0.6;
           color: #ffffff;
         }
 
+        @media (min-width: 640px) {
+          .player-country {
+            font-size: 11px;
+          }
+        }
+
         .write-link {
           display: inline-block;
-          margin-top: 4px;
-          font-size: 11px;
+          margin-top: 2px;
+          font-size: 10px;
           color: #22c55e;
+        }
+
+        @media (min-width: 640px) {
+          .write-link {
+            font-size: 11px;
+          }
         }
       `}</style>
     </div>

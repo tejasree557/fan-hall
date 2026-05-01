@@ -185,11 +185,31 @@ export function PlayersSection() {
         onAdd={handleAddPlayer}
       />
 
-      <style jsx>{`
+<style jsx>{`
         .players-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-          gap: 20px;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 12px;
+        }
+
+        @media (min-width: 640px) {
+          .players-grid {
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 16px;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .players-grid {
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .players-grid {
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+          }
         }
       `}</style>
     </section>
