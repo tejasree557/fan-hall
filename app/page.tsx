@@ -16,10 +16,10 @@ export default function Home() {
       {/* 2. Fan Letter */}
       <FanLetterSection />
       
-      {/* 3. Team India Card */}
+{/* 3. Team India Card */}
       <TeamIndiaCard />
       
-{/* 4. Fan Favorites */}
+      {/* 4. Fan Favorites */}
       <FanFavoritesSection />
 
       {/* 5. Fan Battle Section */}

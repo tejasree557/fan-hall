@@ -187,9 +187,9 @@ const handleVote = async (playerId: string, playerName: string) => {
   console.log('Render - battlePlayers:', battlePlayers.length, battlePlayers)
   console.log('Render - votes:', votes)
 
-  return (
-    <section className="py-20 bg-gradient-to-b from-orange-500/5 to-red-500/5">
-      <div className="max-w-4xl mx-auto px-4">
+return (
+    <section className="py-12 sm:py-20 bg-gradient-to-b from-orange-500/5 to-red-500/5">
+      <div className="max-w-4xl mx-auto px-3 sm:px-4">
         {/* Streak Display */}
         {streak > 0 && !voteResult && (
           <div className="mb-8 text-center">
@@ -289,7 +289,7 @@ const handleVote = async (playerId: string, playerName: string) => {
             </div>
 
             {/* Head-to-head */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 max-w-3xl mx-auto">
               {battlePlayers.map((player, index) => {
 const isWinner = player.id === winnerEntry[0]
 const playerVotes = votes[player.id] || 0

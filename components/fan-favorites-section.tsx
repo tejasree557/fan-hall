@@ -35,10 +35,10 @@ function FanFavCard({
   const rankLabel = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `#${rank}`
 
   return (
-    <Link href={`/write/${slug}`} className="group block flex-shrink-0 min-w-[220px] max-w-[220px]">
+<Link href={`/write/${slug}`} className="group block flex-shrink-0 w-[160px] sm:w-[180px] md:w-[200px] lg:w-[220px]">
 
 
-      <div className="group bg-white/5 backdrop-blur-lg rounded-2xl p-3 border border-white/10 hover:border-cyan-400/40 transition-all duration-300 hover:shadow-[0_0_25px_rgba(34,211,238,0.2)] relative rounded-2xl overflow-hidden h-64">
+<div className="group bg-white/5 backdrop-blur-lg rounded-2xl p-2 sm:p-3 border border-white/10 hover:border-cyan-400/40 transition-all duration-300 hover:shadow-[0_0_25px_rgba(34,211,238,0.2)] relative rounded-2xl overflow-hidden h-52 sm:h-56 md:h-64">
 
         {image ? (
           <Image
@@ -66,8 +66,8 @@ function FanFavCard({
           </div>
         )}
 
-        {/* Bottom info */}
-        <div className="absolute bottom-0 left-0 right-0 p-5">
+{/* Bottom info */}
+        <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-5">
           <p className="text-white/60 text-xs mb-1 uppercase tracking-wider">{country}</p>
           <div className="mt-3 space-y-1">
             <h3 className="text-white font-semibold text-sm">{name}</h3>
