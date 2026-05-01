@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Heart, Zap, Flame, TrendingUp, Trophy } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { getBattleVotes, voteBattle, getTrendingVsRisingBattle, getUserStreak, getTodayLeaderboard, hasUserVotedToday, type VoteResult } from '@/lib/api'
@@ -30,6 +30,8 @@ export function FanBattleSection() {
   const [votes, setVotes] = useState<Record<string, number>>({})
   const [votedToday, setVotedToday] = useState(false)
   const [votingPlayer, setVotingPlayer] = useState<string | null>(null)
+  // Use ref for instant vote blocking
+  const hasVotedRef = useRef(false)
   const [loading, setLoading] = useState(true)
   const [streak, setStreak] = useState(0)
   const [voteResult, setVoteResult] = useState<VoteResult | null>(null)
@@ -124,13 +126,26 @@ export function FanBattleSection() {
     hydrateVotedState()
   }, [])
 
-  const handleVote = async (playerId: string, playerName: string) => {
-    if (votedToday || votingPlayer) return
-
+const handleVote = async (playerId: string, playerName: string) => {
+    // CHECK localStorage directly for instant blocking (avoid state lag)
     const today = new Date().toDateString()
+    const alreadyVotedLocal = localStorage.getItem('battle-voted')
+    
+    if (alreadyVotedLocal === today || votedToday) {
+      alert("You have already voted today! Come back tomorrow.")
+      return
+    }
+    
+    if (votingPlayer) return
+
+    // IMMEDIATELY set localStorage first - BLOCK before any API call
     localStorage.setItem('battle-voted', today)
     setVotedToday(true)
     setVotingPlayer(playerId)
+    
+    // Also set ref for instant blocking if user clicks fast
+    if (hasVotedRef.current) return
+    hasVotedRef.current = true
 
     try {
       const result = await voteBattle(playerId, playerName)
@@ -142,13 +157,20 @@ export function FanBattleSection() {
       
       const leaderboardData = await getTodayLeaderboard()
       setLeaderboard(leaderboardData)
+      
+      // Double-check - if we somehow get here but already voted, show error
+      if (!result.success) {
+        alert("You have already voted today! Come back tomorrow.")
+        hasVotedRef.current = false
+      }
     } catch (error) {
       console.error('Vote error:', error)
       if (error instanceof Error && error.message.includes('ALREADY_VOTED_TODAY')) {
         setVotedToday(true)
+        alert("You have already voted today! Come back tomorrow.")
       } else {
-        localStorage.removeItem('battle-voted')
-        setVotedToday(false)
+        // API failed but vote may have been recorded - keep blocked
+        console.log('Vote recorded but UI update failed')
       }
       setVotingPlayer(null)
     }

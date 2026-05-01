@@ -63,28 +63,26 @@ export function StoryCard({ id, fanName, country, storyPreview, likeCount: initi
 
   return (
     <div className="group bg-card border border-border/50 rounded-xl p-5 sm:p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5">
-      {/* PLAYER HEADER - Main Focus */}
+{/* PLAYER HEADER - Main Focus */}
       {playerName && (
         <div className="flex items-center gap-2 mb-4 pb-4 border-b border-cyan-400/10">
-          <div className="w-9 h-9 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 text-xs font-semibold shrink-0">🏏</div>
+          <div className="w-9 h-9 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 text-xs font-semibold shrink-0">💌</div>
           <div>
-            <p className="text-xs text-gray-400 leading-none">For</p>
+            <p className="text-xs text-gray-400 leading-none">A letter to</p>
             <p className="text-base font-bold text-cyan-400 leading-tight">{playerName}</p>
           </div>
         </div>
       )}
 
-      {/* Fan/Author Info */}
+{/* Fan/Author Info */}
       <div className="flex items-center gap-2 mb-3">
         <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-foreground font-semibold text-xs shrink-0">
           {fanName.split(' ').map(n => n[0]).join('').slice(0, 2)}
         </div>
         <div className="min-w-0">
-          <h4 className="font-medium text-foreground text-xs truncate">{fanName}</h4>
-          <div className="flex items-center gap-1 text-muted-foreground text-xs">
-            <MapPin className="w-3 h-3" />
-            <span>{country}</span>
-          </div>
+          <h4 className="font-medium text-foreground text-xs truncate">
+            ✨ by {fanName}{country && `, ${country}`}
+          </h4>
         </div>
       </div>
 
@@ -95,9 +93,9 @@ export function StoryCard({ id, fanName, country, storyPreview, likeCount: initi
         />
       )}
 
-      {/* Story Preview */}
-      <p className="italic text-gray-300 text-sm leading-relaxed mb-3">
-        &ldquo;{storyPreview.slice(0, 150)}&hellip;&rdquo;
+{/* Story Preview */}
+      <p className="text-gray-300 text-sm leading-relaxed mb-3 italic">
+        &ldquo;{storyPreview.slice(0, 100)}&hellip;&rdquo;
       </p>
 
       {/* Footer with Actions */}

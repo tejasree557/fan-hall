@@ -1,0 +1,1 @@
+c:\Users\Dell\Downloads\1.jpeg c:\Users\Dell\Downloads\2.jpeg c:\Users\Dell\Downloads\3.jpeg c:\Users\Dell\Downloads\4.jpeg c:\Users\Dell\Downloads\5.jpeg c:\Users\Dell\Downloads\6.jpeg c:\Users\Dell\Downloads\7.jpeg c:\Users\Dell\Downloads\8.jpeg c:\Users\Dell\Downloads\9.jpeg c:\Users\Dell\Downloads\10.jpeg c:\Users\Dell\Downloads\11.jpeg
